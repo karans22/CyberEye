@@ -1,0 +1,597 @@
+<%@page language="java" import="java.sql.*"%>
+<!-- saved from url=(0018)http://hetc.ac.in/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login Page</title>
+<!--*******************************linking bootstrap and other****************!-->
+    <link rel="stylesheet" href="./Home_files/pure-min.css">
+    <link rel="stylesheet" href="./Home_files/grids-responsive-min.css">
+    <link rel="stylesheet" href="./Home_files/font-awesome.min.css">
+    <link href="./Home_files/css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="./Home_files/main.css">
+    <link rel="stylesheet" type="text/css" href="./Home_files/menu.css">
+    <link rel="stylesheet" type="text/css" href="./Home_files/swipebox.min.css">
+    <link rel="stylesheet" type="text/css" href="./Home_files/ninja-slider.css">
+    <link rel="stylesheet" type="text/css" href="./Home_files/jquery-ui.css">
+        <link rel="stylesheet" href="./Home_files/swiper.min.css">
+    <link rel="shortcut icon" href="http://hetc.ac.in/site/templates/img/favicon.ico">
+    <style>
+    
+	#maindiv
+{
+	width:100%
+}
+#formdiv
+{
+	width:345px;
+
+    margin:0 auto;
+	margin-top:100px;
+	border-radius:6px;
+	border:1px#96f solid;
+	box-shadow:10px10px5px#00FFFF;
+}
+#tableReg
+{
+	border-collapse:collapse;
+	width:500px
+	padding:0px;
+}
+td
+{
+	padding:0px;
+}
+	
+    	.header-admission-button{
+    		float:right; 
+    		margin-right:0px;
+    		margin-top:-75px;
+    		display:inline-block;
+    	}
+    	@media (max-width:768px){
+    		.header-admission-button{
+    			display:none;
+    		}
+    	}
+    	@media (width:1024px){
+    		.header-admission-button{
+    			margin-right:0px;
+    			padding:10px;
+    		}
+    	}
+    </style>
+<style></style><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+<!--****************************add logo*****************************!-->
+
+<body>
+<header>
+    <div class="home-page" style="background:;padding: 10px 0;">
+        <div class="pure-g">
+            <div class="pure-u-md-1-1">
+                <a href="#" class="brand">
+<a href="#" class="brand"><img src="./Home_files/header1.png" alt="Hooghly Engineering and Technology College"></a> </a>
+               
+        </div>
+    </div>
+
+</header>
+
+<div id ="maindiv">
+ 
+ <div id="formdiv">
+ <form action="trans_add1.jsp"method="POST"name= "myform"on onsubmit="return(formValidation());">
+<%try{
+   Class.forName("com.mysql.jdbc.Driver");
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/img","root","Karan@22");
+	Statement st=con.createStatement();%>
+ <table id ="tableReg">
+ <tr>
+     <td colspan="2" style="text-align:center;background-color:#87CEEB;ccf;padding:10px;color:#4B0082;font-size:18px;">Add Threat Transaction</td>
+ </tr>
+ <tr>
+     <td width="140px;">Area Location</td>
+     <%String a="select * from arealoc;";
+              ResultSet rs=st.executeQuery(a);%>
+     <td width="140px;"><select name="area" id="area"><option value="">Select Area Location</option>
+         <% while(rs.next()) {%></%>
+                    <option value="<%=rs.getString(1)%>"><%=rs.getString(1)%></option>
+          <% } %>   </select></td>
+ </tr>
+ <tr>
+     <td width="140px;">Gate Number</td>
+     <%String b="select * from gateno;";
+              rs=st.executeQuery(b);%>
+     <td width="240px;"><select name="gate" id="gate"><option value="">Select Gate Number</option>
+         <% while(rs.next()) {%></%>
+                    <option value="<%=rs.getString(1)%>"><%=rs.getString(1)%></option>
+          <% } %>   </select></td>
+ </tr>
+  <tr>
+     <td width="140px;">Threat Location</td>
+     <%a="select * from local;";
+              rs=st.executeQuery(a);%>
+     <td><select name="loca" id="loca"><option value="">Select Threat Location</option>
+         <% while(rs.next()) {%></%>
+                    <option value="<%=rs.getString(1)%>"><%=rs.getString(1)%></option>
+          <% } %>   </select></td>
+ </tr>
+  <tr>
+     <td width="140px;">Threat Type</td>
+     <% a="select * from threat;";
+              rs=st.executeQuery(a);%>
+     <td width="140px;"><select name="threat" id="threat"><option value="">Select Threat Type</option>
+         <% while(rs.next()) {%></%>
+                    <option value="<%=rs.getString(1)%>"><%=rs.getString(1)%></option>
+          <% } %>   </select></td>
+ </tr>
+      <% }
+         catch(Exception e){
+    e.printStackTrace();
+}
+%>
+ <tr>
+     <td></td>
+     <td >
+    <input type= "submit"style="cursor:pointer" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type= "reset" value="Reset"  style="cursor:pointer"/>
+    </td>
+ </tr>
+  
+    </table>
+    
+</form> 
+    <script>
+         const area = document.getElementById("area");
+         const gate = document.getElementById("gate");
+         const loca = document.getElementById("loca");
+         const threat = document.getElementById("threat");
+              function formValidation(){
+     if (area.value =="") {
+    alert("Please select area location")
+    return false;}
+         if (gate.value == "") {
+    alert("Please select gate number")
+    return false;}
+         if (loca.value == "") {
+    alert("Please select threat location")
+    return false;}
+         if (threat.value == "") {
+    alert("Please select threat type")
+    return false;}
+                  return true;
+              }
+     </script>
+   
+    </div>
+    </div>
+    <br><br><br><br><br>
+	<br><br><br><br><br>
+	
+<footer>
+  <div class="cred-row">
+    <div class="pure-g">
+
+      <div class="pure-u-1-1 pure-u-md-8-24">
+          <h4>Compucom Hotel &amp; Group</h4>
+          <ul class="address-list">
+            <li>
+              <i class="fa fa-map-marker"></i>
+              Vivekananda Road, Pipulpati<br>
+              P.O. &amp; Dist. Hooghly,Pin 712103<br>
+              West Bengal
+            </li>
+            <li><i class="fa fa-phone"></i>+91 33 2681 0505/2680 4121/5702</li>
+            <li><i class="fa fa-envelope-o"></i><a href="mailto:mail@hetc.ac.in">mail@comphotel.ac.in</a></li>
+          </ul>
+      </div>
+      <div class="pure-u-1-1 pure-u-md-8-24">
+        <div class="text-right">
+          <a href="http://hetc.ac.in/contact-us" class="pure-button reach-button">How to reach <i class="fa fa-map-marker"></i></a>
+        </div>
+        <p class="text-right">© Compucom 2019</p>
+     
+      </div>
+    </div>
+  </div>
+</footer>
+     
+<script src="./Home_files/jquery.min.js.download"></script>
+<script src="./Home_files/jquery.swipebox.min.js.download"></script>
+<script src="./Home_files/swiper.jquery.min.js.download"></script>
+<script src="./Home_files/fitvids.js.download"></script>
+<script src="./Home_files/ninjaVideoPlugin.js.download"></script>
+<script src="./Home_files/ninja-slider.js.download"></script>
+<script src="./Home_files/jquery-ui.js.download"></script>
+
+     <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            autoplay:5000,
+            spaceBetween: 30
+        });
+        var gswiper = new Swiper('.gallery-swiper-container', {
+            pagination: '.gswiper-pagination',
+            slidesPerView: 3,
+            paginationClickable: true,
+            spaceBetween: 20,
+            nextButton: '.gswiper-button-next',
+            prevButton: '.gswiper-button-prev',
+            centeredSlides: true,
+            autoplay:5000
+        });
+        var total_news_types = 3;
+        var showNews = function(j){
+            for(var i=1; i<=total_news_types; i++){
+                $("#nl" + i).hide();
+                $("#nl" + i).removeClass("active");
+                $("#nlb" + i).removeClass("active");
+                $("#nlm" + i).addClass("hidden");
+            }
+            $("#nl" + j).show(200);
+            $("#nlb" + j).addClass("active");
+            $("#nlm" + j).removeClass("hidden");
+        }
+    </script>
+<script type="text/javascript">
+$(window).scroll(function(){
+   var fromTop = $(this).scrollTop();
+   if(fromTop > 100){
+     console.log("Added");
+     $("#cssmenu").addClass("fixed-nav");
+   }else if(fromTop < 100){
+     console.log("Removed");
+     $("#cssmenu").removeClass("fixed-nav");
+   }
+});
+( function( $ ) {
+$( document ).ready(function() {
+$('#cssmenu').prepend('<div id="menu-button">Menu</div>');
+	$('#cssmenu #menu-button').on('click', function(){
+		var menu = $(this).next('ul');
+		if (menu.hasClass('open')) {
+			menu.removeClass('open');
+		}
+		else {
+			menu.addClass('open');
+		}
+	});
+    $(".video-box").fitVids();
+});
+} )( jQuery );
+</script>
+<script>
+var submitApplicationForm = function(){
+	//console.log("Submitting Form");
+    $("#calert").hide();
+	var formData = {};
+    formData.course = $('#course').val();
+    formData.stream = $('#stream').val();
+	formData.full_name = $('#full-name').val();
+    formData.gender = $('#gender').val();
+    formData.dob = $('#datepicker').val();
+	formData.address = $('#address').val();
+	formData.email = $('#email').val();
+	formData.mobile = $('#mobile').val();
+	
+	formData.father_name = $('#father_name').val();
+	formData.father_occupation = $('#father_occupation').val();
+	formData.father_mobile = $('#father_mobile').val();
+	
+	
+	formData.t_exam = $('#t_exam').val();
+	formData.t_board = $('#t_board').val();
+	formData.t_yop = $('#t_yop').val();
+	formData.t_aggregate = $('#t_aggregate').val();
+	formData.tw_exam = $('#tw_exam').val();
+	formData.tw_board = $('#tw_board').val();
+	formData.tw_yop = $('#tw_yop').val();
+	formData.tw_aggregate = $('#tw_aggregate').val();
+    var error_message = "";
+	if(!formData.full_name) {
+		error_message+= "Please enter full name, ";
+	}
+    if(!formData.dob) {
+		error_message+= "Please enter date of birth, ";
+	}
+    if(!formData.address) {
+		error_message+= "Please enter address, ";
+	}
+    if(!formData.email) {
+		error_message+= "Please enter email, ";
+	}else{
+		var valid = isValidEmail(formData.email);
+		if(!valid){
+			error_message+= "Please enter a valid email address, ";
+		}
+	}
+    if(!formData.mobile) {
+		error_message+= "Please enter mobile, ";
+	}
+    if(!formData.t_exam) {
+		error_message+= "Please enter tenth exam name, ";
+	}
+    if(!formData.t_board) {
+		error_message+= "Please enter tenth board, ";
+	}
+    if(!formData.t_yop) {
+		error_message+= "Please enter tenth year of passing, ";
+	}
+    if(!formData.t_aggregate) {
+		error_message+= "Please enter tenth aggregate marks in percentage, ";
+	}
+    if(!formData.tw_exam) {
+		error_message+= "Please enter twelfth exam name, ";
+	}
+    if(!formData.tw_board) {
+		error_message+= "Please enter twelfth board, ";
+	}
+    if(!formData.tw_yop) {
+		error_message+= "Please enter twelfth year of passing, ";
+	}
+    if(!formData.tw_aggregate) {
+		error_message+= "Please enter twelfth aggregate marks in percentage ";
+	}
+	if(error_message != ""){
+		error_message = error_message.substring(0, error_message.length-2) + ".";
+        $("#error-message").html(error_message);
+		$("#calert").show(300);
+        console.log(error_message);
+	}else{
+       /* $("#apply_submit_button").hide();*/
+		$.post( "/register.php", formData, function( data){     
+            console.log("-----data------");
+            var status = '';
+            if(data.length>0){
+                var obj = JSON.parse(data);
+                status = obj.status;
+            }
+            if(status=="e"){
+            alert("You have already submitted your form or some other error occured");
+            }else{   
+                //console.log(obj.status);
+                resetContactForm();
+                alert("Thank you very much. We will get back to you shortly.");
+            }
+           
+		});
+	}
+    return false;
+	function resetContactForm(){
+	$('#cname').val("");
+	$('#course').val("");
+    $('#stream').val("");
+	$('#full-name').val("");
+    $('#gender').val("");
+    $('#datepicker').val("");
+	$('#address').val("");
+	$('#email').val("");
+	$('#mobile').val("");
+	
+	$('#father_name').val("");
+	$('#father_occupation').val("");
+	$('#father_mobile').val("");
+	
+	$('#t_exam').val("");
+	$('#t_board').val("");
+	$('#t_yop').val("");
+	$('#t_aggregate').val("");
+	$('#tw_exam').val("");
+	$('#tw_board').val("");
+	$('#tw_yop').val("");
+	$('#tw_aggregate').val("");
+	$("#calert").hide();
+    $("#contact_submit_button").show();
+}   
+}
+
+function isValidEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+function resetApplicationForm(){
+	$('#cname').val("");
+	$('#course').val("");
+    $('#stream').val("");
+	$('#full-name').val("");
+    $('#gender').val("");
+    $('#datepicker').val("");
+	$('#address').val("");
+	$('#email').val("");
+	$('#mobile').val("");
+	$('#father_name').val("");
+	$('#father_occupation').val("");
+	$('#father_mobile').val("");
+	
+	$('#t_exam').val("");
+	$('#t_board').val("");
+	$('#t_yop').val("");
+	$('#t_aggregate').val("");
+	$('#tw_exam').val("");
+	$('#tw_board').val("");
+	$('#tw_yop').val("");
+	$('#tw_aggregate').val("");
+	$("#calert").hide();
+    $("#contact_submit_button").show();
+}
+
+    function resetApplicationForm(){
+	$('#cname').val("");
+	$('#course').val("");
+    $('#stream').val("");
+	$('#full-name').val("");
+    $('#gender').val("");
+    $('#datepicker').val("");
+	$('#address').val("");
+	$('#email').val("");
+	$('#mobile').val("");
+	$('#father_name').val("");
+	$('#father_occupation').val("");
+	$('#father_mobile').val("");
+	$('#t_exam').val("");
+	$('#t_board').val("");
+	$('#t_yop').val("");
+	$('#t_aggregate').val("");
+	$('#tw_exam').val("");
+	$('#tw_board').val("");
+	$('#tw_yop').val("");
+	$('#tw_aggregate').val("");
+	$("#calert").hide();
+    $("#contact_submit_button").show();
+} 
+
+//----------alumni registration form function-------------------- 
+
+var submitRegistrationForm = function(){
+	//console.log("Submitting Form");
+    $("#calert").hide();
+	var formData = {};
+    formData.name = $('#name').val();
+	formData.company = $('#company').val();
+    formData.designation = $('#designation').val();
+    formData.sector = $('#sector').val();
+    formData.location = $('#location').val();
+	formData.contact1 = $('#contact1').val();
+	formData.contact2 = $('#contact2').val();
+	formData.email = $('#email').val();
+	formData.yop = $('#yop').val();
+    formData.stream = $('#stream').val();
+    console.log(formData);
+    var error_message = "";
+	if(!formData.name) {
+		error_message+= "Please enter name, ";
+	}
+    if(!formData.company) {
+		error_message+= "Please enter Company Name, ";
+	}
+    if(!formData.designation) {
+		error_message+= "Please enter Current Designation,";
+	}
+    if(!formData.sector) {
+		error_message+= "Please enter Field/Sector,";
+	}
+    if(!formData.location) {
+		error_message+= "Please enter Location,";
+	}
+    if(!formData.contact1) {
+		error_message+= "Please enter Current Designation,";
+	}
+    if(!formData.contact2) {
+		error_message+= "Please enter Current Designation,";
+	}
+     formData.email = $('#email').val();
+    if(!formData.email) {
+		error_message+= "Please enter email, ";
+	}else{
+		var valid = isValidEmail(formData.email);
+		if(!valid){
+			error_message+= "Please enter a valid email address, ";
+		}
+	}
+    if(!formData.yop) {
+		error_message+= "Please enter year of Passed out,";
+	}
+    if(!formData.stream) {
+		error_message+= "Please enter Current stream,";
+	}
+	if(error_message != ""){
+		error_message = error_message.substring(0, error_message.length-2) + ".";
+        $("#error-message").html(error_message);
+		$("#calert").show(300);
+        console.log(error_message);
+	}else{
+       /* $("#apply_submit_button").hide();*/
+		$.post( "/alumniRegisterService.php", formData, function(data){     
+            console.log("-----data------");
+            console.log(data);
+            var status = '';
+            if(data.length>0){
+                var obj = JSON.parse(data);
+                status = obj.status;
+                console.log(data);
+            }
+            if(status=="e"){
+            alert("You have already submitted your form or some other error occured");
+            }else{   
+                //console.log(obj.status);
+                resetRegistrationForm();
+                alert("Thank you very much. We will get back to you shortly.");
+            }
+		});
+	}
+    return false;
+	function resetRegistrationForm(){
+	$('#name').val("");
+	$('#company').val("");
+    $('#designation').val("");
+    $('#sector').val("");
+    $('#location').val("");
+	$('#contact1').val("");
+	$('#contact2').val("");
+	$('#email').val("");
+	$('#yop').val("");
+    $('#stream').val("");
+	$("#calert").hide();
+    $("#register_submit_button").show();
+}   
+}
+function isValidEmail(email){
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+function resetRegistrationForm(){
+	$('#name').val("");
+	$('#company').val("");
+    $('#designation').val("");
+    $('#sector').val("");
+    $('#location').val("");
+	$('#contact1').val("");
+	$('#contact2').val("");
+	$('#email').val("");
+	$('#yop').val("");
+    $('#stream').val("");
+	$("#calert").hide();
+    $("#register_submit_button").show();
+}
+
+    function resetRegistrationForm(){
+	$('#name').val("");
+	$('#company').val("");
+    $('#designation').val("");
+    $('#sector').val("");
+    $('#location').val("");
+	$('#contact1').val("");
+	$('#contact2').val("");
+	$('#email').val("");
+	$('#yop').val("");
+    $('#stream').val("");
+	$("#calert").hide();
+    $("#register_submit_button").show();
+}
+//-----------------window onload function----------
+
+window.onload = function(){
+    $("#registrationForm").submit(function(e) {
+        return false;
+    });
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1980:+nn"
+    });
+    
+    $("#registrationAlumniForm").submit(function(e) {
+        return false;
+    });
+    var $select = $("#yop");
+    for (i=2000;i<=2080;i++){
+        $select.append($('<option></option>').val(i).html(i))
+    }
+    console.log("Calling Start function");
+    start();
+        
+};
+</script>
+ 
+
+</body></html>

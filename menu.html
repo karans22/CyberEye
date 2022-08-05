@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script language="javascript" type="text/javascript" src="bs_js/jquery-1.9.1.js">
+</script>
+<script>
+	$(document).ready(function()
+	{
+		$('li').hover(function()
+		{
+			$(this).find('ul>li').fadeToggle(400);
+		});
+	});
+</script>
+</head>
+<body>
+    <center>
+ 
+<h1> <center><img src="./Home_files/header1.png" width="130" height="100"></a> CYBER EYE SECURITY SYSTEM </center> </h1>  
+ 
+      <ul>
+	<li><a href="#">Area Location</a>
+    	<ul>
+        	<li><a target="_parent" href="area_show.jsp">Show</a></li>
+   			<li><a href="area_add.jsp">Add</a></li>
+        </ul>
+    </li>
+    <li><a href="#">Gate Number</a>
+    	<ul>
+        	<li><a target="_top" href="gate_show.jsp">Show</a></li>
+   			<li><a href="gate_add.jsp">Add</a></li>
+        </ul>
+    </li>
+    <li><a href="#">Threat Location</a>
+    	<ul>
+        	<li><a target="_parent" href="loca_show.jsp">Show</a></li>
+   			<li><a href="loca_add.jsp">Add</a></li>
+        </ul>
+    </li>
+
+    <li><a href="#">Threat Type</a>
+    	<ul>
+        	<li><a target="_parent" href="threat_show.jsp">Show</a></li>
+   			<li><a href="threat_add.jsp">Add</a></li>
+        </ul>
+    
+    </li>
+          
+    <li><a href="#">Tablet</a>
+    	<ul>
+        	<li><a target="_parent" href="tab_show.jsp">Show</a></li>
+   			<li><a href="tab_add.jsp">Add</a></li>
+        </ul>
+    </li>
+
+ <li><a href="#">Threat Transaction</a>
+    	<ul>
+        	<li><a target="_parent" href="trans_show.jsp">Show</a></li>
+   			<li><a href="trans_add.jsp">Add</a></li>
+    		<li><a href="trans_del.jsp">Delete</a></li>
+        </ul>
+    
+    </li>
+
+ 
+
+ <li><a href="#">Users</a>
+    	<ul>
+        	<li><a target="_parent" href="login_show.jsp">Show</a></li>
+   			<li><a href="login_add.jsp">Add</a></li>
+    		<li><a href="login_del.jsp">Delete</a></li>
+        </ul>
+ 
+ </li>
+
+</ul>    
+    </center>
+<head>
+<style> 
+div {
+    width: 200px;
+    height: 200px;
+    background: blue;
+    position: relative;
+    -webkit-animation: myfirst 5s linear 2s infinite alternate; /* Chrome, Safari, Opera */
+    animation: myfirst 5s linear 2s infinite alternate;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst {
+    0%   {background:red; left:0px; top:0px;}
+    25%  {background:yellow; left:200px; top:0px;}
+    50%  {background:blue; left:200px; top:200px;}
+    75%  {background:green; left:0px; top:200px;}
+    100% {background:blue; left:0px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes myfirst {
+    0%   {background:red; left:0px; top:0px;}
+    25%  {background:yellow; left:200px; top:0px;}
+    50%  {background:blue; left:200px; top:200px;}
+    75%  {background:green; left:0px; top:200px;}
+    100% {background:blue; left:0px; top:0px;}
+}
+@charset "utf-8";
+/* CSS Document */
+
+ul
+{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+
+ul li
+{
+	
+	width:210px;
+	height:30px;
+	border: 0px solid #930;
+	text-align:center;
+	line-height:30px;
+	background-color:#0000ff;	
+	float:left;
+}
+
+ul li a
+{
+	text-decoration:none;
+	color:#ffcc99;
+	background::#fff;
+}
+
+ul li li
+{
+	background:#0000ff;
+	display:none;
+}
+
+ul li li:hover
+{
+	background-color:#930;
+}
+ul li li a
+{
+	color:#fff;
+}
+</style>
+</head>
+</body>
+</html>

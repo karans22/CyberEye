@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Registration form</title>
+<script type="text/javascript">
+</script>
+
+<style type="text/css">
+#maindiv
+{
+	width:100%
+}
+#formdiv
+{
+	width:378px;
+
+    margin:0 auto;
+	margin-top:100px;
+	border-radius:6px;
+	border:1px#96f solid;
+	box-shadow:10px10px5px#888888;
+}
+#tableReg
+{
+	border-collapse:collapse;
+	width:379px;
+	padding:5px;
+}
+td
+{
+	padding:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+ <div id ="maindiv">
+ 
+ <div id="formdiv">
+ <form action="login.jsp" method="post"name= "myform"on onsubmit="return(validate());">
+
+ <table id ="tableReg">
+ <tr>
+     <td colspan="2" style="text-align:center;background-color:#060;padding:10px;color:#F00;font-size:18px;">USER LOGIN</td>
+ </tr>
+ <tr>
+     <td width="140px;">User Id</td>
+     <td><input type="text"name="user"placeholder="enter user Id"id="stateid" /><span style="color:#F00">*</span></td>
+ </tr>
+ <tr>
+     <td>password</td>
+     <td><input type="text"name="pass"placeholder="enter password"/></td>
+ </tr>
+  <tr>
+      
+ <tr>
+     <td></td>
+     <td >
+    <input type= "submit"style="cursor:pointer" /><input type= "reset" value="Reset"  style="cursor:pointer"/>
+    </td>
+ </tr>
+  
+    </table>
+</form> 
+   
+    </div>
+    </div>
+   
+   
+</body>
+</html>
